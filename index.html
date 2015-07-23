@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GSI Tiles on Cesium</title>
+<script src="https://cesiumjs.org/Cesium/Build/Cesium/Cesium.js"></script>
+<link href="https://cesiumjs.org/Cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+<style>
+  #cesiumContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+<div id="cesiumContainer"></div>
+<script>
+  var viewer = new Cesium.Viewer('cesiumContainer', {
+    imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+      url: 'http://cyberjapandata.gsi.go.jp/xyz/std/',
+      credit: new Cesium.Credit('地理院タイル', '', 'http://maps.gsi.go.jp/development/ichiran.html')
+    }),
+    baseLayerPicker: false
+  });
+  viewer.scene.camera.setPositionCartographic(Cesium.Cartographic.fromDegrees(140.00, 36.14, 20000000.0));
+</script>
+</body>
+</html>
